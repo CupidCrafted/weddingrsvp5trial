@@ -1,0 +1,1119 @@
+
+<!
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101a30">
+<title>Esi & Kwesi | Wedding Invitation</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --navy: #101a30;
+  --navy2: #182641;
+  --gold: #d6b77b;
+  --lightgold: #f1dfb8;
+  --cream: #f7f0e5;
+  --rose: #c98291;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--navy);
+  color: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+/* =========================
+   OPENING CURTAINS
+========================= */
+
+#opening {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: var(--navy);
+  overflow: hidden;
+  cursor: pointer;
+  transition: visibility 1.8s;
+}
+
+#opening.opened {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.curtain {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 50.5%;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,.025) 0px,
+      transparent 8px,
+      rgba(0,0,0,.12) 18px,
+      transparent 32px
+    ),
+    linear-gradient(90deg, #0b1427, #192743 45%, #101a30);
+  box-shadow: inset -15px 0 30px rgba(0,0,0,.3);
+  transition: transform 3.2s cubic-bezier(.77,0,.18,1);
+}
+
+.curtain.left {
+  left: 0;
+  border-right: 2px solid rgba(214,183,123,.45);
+}
+
+.curtain.right {
+  right: 0;
+  border-left: 2px solid rgba(214,183,123,.45);
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,.025) 0px,
+      transparent 8px,
+      rgba(0,0,0,.12) 18px,
+      transparent 32px
+    ),
+    linear-gradient(90deg, #101a30, #192743 55%, #0b1427);
+}
+
+#opening.opened .curtain.left {
+  transform: translateX(-105%);
+}
+
+#opening.opened .curtain.right {
+  transform: translateX(105%);
+}
+
+.curtain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0,0,0,.18),
+    transparent 20%,
+    rgba(255,255,255,.035) 50%,
+    transparent 75%,
+    rgba(0,0,0,.2)
+  );
+}
+
+.curtain-trim {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 7px;
+  background: linear-gradient(
+    90deg,
+    #9b7847,
+    #f0d69c,
+    #9b7847
+  );
+  opacity: .65;
+}
+
+.left .curtain-trim { right: 0; }
+.right .curtain-trim { left: 0; }
+
+/* Rose garlands */
+
+.garland {
+  position: absolute;
+  width: 115%;
+  height: 190px;
+  top: -5px;
+  left: -7%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.garland.lower {
+  top: auto;
+  bottom: 0;
+  transform: rotate(180deg);
+}
+
+.rose {
+  position: absolute;
+  font-size: 25px;
+  filter: drop-shadow(0 3px 4px rgba(0,0,0,.4));
+}
+
+.rose:nth-child(1) { left: 5%; top: 20px; }
+.rose:nth-child(2) { left: 22%; top: 52px; font-size: 19px; }
+.rose:nth-child(3) { left: 40%; top: 75px; font-size: 27px; }
+.rose:nth-child(4) { left: 59%; top: 82px; font-size: 19px; }
+.rose:nth-child(5) { left: 76%; top: 52px; font-size: 27px; }
+.rose:nth-child(6) { left: 93%; top: 22px; font-size: 20px; }
+
+.vine {
+  position: absolute;
+  top: 28px;
+  left: 0;
+  width: 100%;
+  height: 95px;
+  border-top: 2px solid rgba(177,156,104,.6);
+  border-radius: 50%;
+  transform: rotate(5deg);
+}
+
+/* Opening text */
+
+.opening-content {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  pointer-events: none;
+  transition: opacity .7s;
+}
+
+#opening.opened .opening-content {
+  opacity: 0;
+}
+
+.opening-content .eyebrow {
+  font-size: 10px;
+  letter-spacing: 5px;
+  color: var(--gold);
+  margin-bottom: 30px;
+}
+
+.opening-content h1 {
+  font-family: 'Great Vibes', cursive;
+  color: var(--lightgold);
+  font-size: clamp(55px, 10vw, 100px);
+  font-weight: 400;
+  line-height: 1.1;
+  text-shadow: 0 5px 30px rgba(0,0,0,.3);
+}
+
+.opening-content .amp {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 38px;
+  color: var(--gold);
+  margin: 3px 0;
+}
+
+.opening-content .invitation {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  letter-spacing: 3px;
+  margin-top: 25px;
+  color: var(--cream);
+}
+
+.opening-content .tap {
+  margin-top: 60px;
+  color: var(--lightgold);
+  font-size: 10px;
+  letter-spacing: 4px;
+  animation: pulse 2s infinite;
+}
+
+.tap-line {
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+  margin: 15px auto;
+}
+
+@keyframes pulse {
+  50% { opacity: .35; }
+}
+
+/* =========================
+   MAIN INVITATION
+========================= */
+
+main {
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+
+main.visible { opacity: 1; }
+
+.hero {
+  min-height: 100svh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 90px 20px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 45%, #263653 0%, #182641 40%, #101a30 85%);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 15px;
+  border: 1px solid rgba(214,183,123,.3);
+  pointer-events: none;
+}
+
+.hero::after {
+  content: "✦";
+  position: absolute;
+  top: 10%;
+  right: 12%;
+  color: var(--gold);
+  font-size: 24px;
+  opacity: .6;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  width: 100%;
+}
+
+.hero-kicker {
+  font-size: 10px;
+  letter-spacing: 6px;
+  color: var(--gold);
+  margin-bottom: 35px;
+}
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(65px, 12vw, 145px);
+  line-height: .83;
+  letter-spacing: -4px;
+  color: var(--lightgold);
+}
+
+.hero .and {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(40px, 6vw, 70px);
+  display: block;
+  color: var(--gold);
+  margin: 20px 0;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.hero-subtitle {
+  margin-top: 48px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  letter-spacing: 3px;
+  line-height: 1.8;
+}
+
+.hero-date {
+  margin-top: 32px;
+  font-size: 11px;
+  letter-spacing: 5px;
+  color: var(--gold);
+}
+
+.hero-flower {
+  position: absolute;
+  color: var(--rose);
+  opacity: .7;
+  font-size: 45px;
+}
+
+.hero-flower.one { top: 13%; left: 8%; }
+.hero-flower.two { bottom: 12%; right: 8%; }
+
+/* =========================
+   COUPLE PHOTO
+========================= */
+
+.photo-section {
+  padding: 100px 25px;
+  text-align: center;
+  background: #f4eee5;
+  color: var(--navy);
+}
+
+.section-label {
+  color: #967447;
+  font-size: 10px;
+  letter-spacing: 5px;
+  margin-bottom: 30px;
+}
+
+.photo-frame {
+  max-width: 600px;
+  margin: auto;
+  height: 520px;
+  border: 1px solid #c3a878;
+  padding: 10px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.photo-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.photo-note {
+  margin-top: 20px;
+  font-family: 'Great Vibes', cursive;
+  font-size: 34px;
+  color: #9c7c50;
+}
+
+/* =========================
+   INVITATION MESSAGE
+========================= */
+
+.message {
+  padding: 100px 25px;
+  text-align: center;
+  background: var(--navy);
+}
+
+.message-inner {
+  max-width: 650px;
+  margin: auto;
+}
+
+.message h2 {
+  font-family: 'Great Vibes', cursive;
+  font-weight: 400;
+  color: var(--gold);
+  font-size: 55px;
+  margin-bottom: 30px;
+}
+
+.message p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 23px;
+  line-height: 1.8;
+  color: #eee4d4;
+}
+
+/* =========================
+   COUNTDOWN
+========================= */
+
+.countdown-section {
+  padding: 85px 20px;
+  text-align: center;
+  background: #192743;
+}
+
+.countdown-section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  color: var(--gold);
+  font-size: 34px;
+  margin-bottom: 40px;
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: clamp(15px, 5vw, 55px);
+}
+
+.count-item strong {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--lightgold);
+  font-size: clamp(35px, 7vw, 65px);
+  font-weight: 400;
+}
+
+.count-item span {
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--gold);
+}
+
+/* =========================
+   WEDDING DETAILS
+========================= */
+
+.details {
+  padding: 100px 25px;
+  text-align: center;
+  background: var(--navy);
+}
+
+.details h2 {
+  font-family: 'Great Vibes', cursive;
+  color: var(--gold);
+  font-size: 55px;
+  font-weight: 400;
+  margin-bottom: 45px;
+}
+
+.detail-card {
+  max-width: 550px;
+  margin: auto;
+  padding: 40px 20px;
+  border-top: 1px solid rgba(214,183,123,.45);
+  border-bottom: 1px solid rgba(214,183,123,.45);
+}
+
+.detail-card .label {
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  margin-bottom: 15px;
+}
+
+.detail-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 35px;
+  font-weight: 400;
+  color: var(--lightgold);
+}
+
+.detail-card p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 21px;
+  margin-top: 10px;
+}
+
+.detail-divider {
+  width: 45px;
+  height: 1px;
+  background: var(--gold);
+  margin: 30px auto;
+}
+
+.map-button {
+  display: inline-block;
+  margin-top: 35px;
+  padding: 16px 28px;
+  border: 1px solid var(--gold);
+  color: var(--lightgold);
+  text-decoration: none;
+  font-size: 10px;
+  letter-spacing: 3px;
+  transition: .3s;
+}
+
+.map-button:hover {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+/* =========================
+   RSVP
+========================= */
+
+.rsvp {
+  background: #f4eee5;
+  color: var(--navy);
+  padding: 90px 25px;
+  text-align: center;
+}
+
+.rsvp h2 {
+  font-family: 'Great Vibes', cursive;
+  color: #987447;
+  font-size: 55px;
+  font-weight: 400;
+}
+
+.rsvp p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 21px;
+  margin: 15px 0 30px;
+}
+
+.rsvp-form {
+  max-width: 420px;
+  margin: auto;
+  text-align: left;
+}
+
+.rsvp-form label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin: 18px 0 8px;
+}
+
+.rsvp-form input,
+.rsvp-form select {
+  width: 100%;
+  padding: 15px;
+  background: transparent;
+  border: 1px solid #c3ae8a;
+  color: var(--navy);
+  font-family: inherit;
+  font-size: 14px;
+  border-radius: 0;
+}
+
+.rsvp-form button {
+  width: 100%;
+  margin-top: 25px;
+  padding: 17px;
+  background: var(--navy);
+  border: 1px solid var(--gold);
+  color: var(--lightgold);
+  font-size: 11px;
+  letter-spacing: 3px;
+  cursor: pointer;
+}
+
+.rsvp-response {
+  margin-top: 20px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  background: #0b1425;
+  padding: 65px 20px;
+  text-align: center;
+  border-top: 1px solid rgba(214,183,123,.3);
+}
+
+footer h2 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 48px;
+  font-weight: 400;
+  color: var(--gold);
+}
+
+footer p {
+  font-size: 9px;
+  letter-spacing: 4px;
+  color: #c5b79e;
+  margin-top: 18px;
+}
+
+@media(max-width:600px) {
+  .photo-frame {
+    height: 420px;
+  }
+
+  .hero h1 {
+    letter-spacing: -2px;
+  }
+
+  .opening-content .eyebrow {
+    letter-spacing: 3px;
+  }
+
+  .opening-content .tap {
+    margin-top: 45px;
+  }
+
+  .message p {
+    font-size: 20px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- OPENING CURTAINS -->
+
+<div id="opening" aria-label="Tap anywhere to open the wedding invitation" tabindex="0">
+
+  <div class="curtain left">
+    <div class="curtain-trim"></div>
+    <div class="vine"></div>
+
+    <div class="garland">
+      <span class="rose">🌹</span>
+      <span class="rose">🌸</span>
+      <span class="rose">🌹</span>
+      <span class="rose">🌸</span>
+      <span class="rose">🌹</span>
+      <span class="rose">🌸</span>
+    </div>
+
+    <div class="garland lower">
+      <span class="rose">🌹</span>
+      <span class="rose">🌸</span>
+      <span class="rose">🌹</span>
+      <span class="rose">🌸</span>
+      <span class="rose">🌹</span>
+      <span class="rose">🌸</span>
+    </div>
+  </div>
+
+  <div class="curtain right">
+    <div class="curtain-trim"></div>
+    <div class="vine"></div>
+
+    <div class="garland">
+      <span class="rose">🌸</span>
+      <span class="rose">🌹</span>
+      <span class="rose">🌸</span>
+      <span class="rose">🌹</span>
+      <span class="rose">🌸</span>
+      <span class="rose">🌹</span>
+    </div>
+
+    <div class="garland lower">
+      <span class="rose">🌸</span>
+      <span class="rose">🌹</span>
+      <span class="rose">🌸</span>
+      <span class="rose">🌹</span>
+      <span class="rose">🌸</span>
+      <span class="rose">🌹</span>
+    </div>
+  </div>
+
+  <div class="opening-content">
+
+    <div class="eyebrow">TOGETHER WITH THEIR FAMILIES</div>
+
+    <h1>Esi</h1>
+
+    <div class="amp">&</div>
+
+    <h1>Kwesi</h1>
+
+    <div class="invitation">
+      REQUEST THE PLEASURE OF YOUR COMPANY
+    </div>
+
+    <div class="tap">
+      <div class="tap-line"></div>
+      TAP ANYWHERE TO OPEN
+      <div class="tap-line"></div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- MAIN INVITATION -->
+
+<main id="main">
+
+  <!-- TYPOGRAPHIC REVEAL -->
+
+  <section class="hero">
+
+    <div class="hero-flower one">✿</div>
+    <div class="hero-flower two">❀</div>
+
+    <div class="hero-inner">
+
+      <div class="hero-kicker">
+        A CELEBRATION OF LOVE
+      </div>
+
+      <h1>ESI</h1>
+
+      <span class="and">&</span>
+
+      <h1>KWESI</h1>
+
+      <div class="hero-subtitle">
+        Two hearts. One beautiful beginning.
+      </div>
+
+      <div class="hero-date">
+        THURSDAY · 10 DECEMBER 2026
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- COUPLE PHOTO -->
+
+  <section class="photo-section">
+
+    <div class="section-label">
+      THE COUPLE
+    </div>
+
+    <div class="photo-frame">
+
+      <img
+        src="IMG_8718.jpeg"
+        alt="Esi and Kwesi celebrating their engagement"
+      >
+
+    </div>
+
+    <div class="photo-note">
+      Forever begins with us.
+    </div>
+
+  </section>
+
+
+  <!-- INVITATION MESSAGE -->
+
+  <section class="message">
+
+    <div class="message-inner">
+
+      <h2>With joyful hearts</h2>
+
+      <p>
+        Together with their families, Esi and Kwesi
+        joyfully invite you to witness and celebrate
+        the beginning of their forever.
+      </p>
+
+      <br>
+
+      <p>
+        Your presence and blessings will make
+        this special day even more meaningful.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- COUNTDOWN -->
+
+  <section class="countdown-section">
+
+    <h2>Counting down to forever</h2>
+
+    <div class="countdown">
+
+      <div class="count-item">
+        <strong id="days">00</strong>
+        <span>DAYS</span>
+      </div>
+
+      <div class="count-item">
+        <strong id="hours">00</strong>
+        <span>HOURS</span>
+      </div>
+
+      <div class="count-item">
+        <strong id="minutes">00</strong>
+        <span>MINUTES</span>
+      </div>
+
+      <div class="count-item">
+        <strong id="seconds">00</strong>
+        <span>SECONDS</span>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- WEDDING DETAILS -->
+
+  <section class="details">
+
+    <h2>The Wedding</h2>
+
+    <div class="detail-card">
+
+      <div class="label">THE DATE</div>
+
+      <h3>10th December 2026</h3>
+
+      <p>Thursday</p>
+
+      <div class="detail-divider"></div>
+
+      <div class="label">THE TIME</div>
+
+      <h3>9:00 AM</h3>
+
+      <div class="detail-divider"></div>
+
+      <div class="label">THE VENUE</div>
+
+      <h3>Church of Christ</h3>
+
+      <p>Cantonments, Accra</p>
+
+      <a
+        class="map-button"
+        href="https://www.google.com/maps/search/?api=1&query=Church+of+Christ+Cantonments+Accra+Ghana"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        VIEW LOCATION ↗
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- RSVP -->
+
+  <section class="rsvp" id="rsvp">
+
+    <h2>Kindly Respond</h2>
+
+    <p>
+      We would love to celebrate with you.
+    </p>
+
+    <form class="rsvp-form" id="rsvpForm">
+
+      <label for="guestName">YOUR NAME</label>
+
+      <input
+        type="text"
+        id="guestName"
+        placeholder="Enter your full name"
+        required
+      >
+
+      <label for="attendance">
+        WILL YOU BE ATTENDING?
+      </label>
+
+      <select id="attendance" required>
+
+        <option value="">Please select</option>
+
+        <option value="Joyfully accepts">
+          Joyfully accepts
+        </option>
+
+        <option value="Regretfully declines">
+          Regretfully declines
+        </option>
+
+      </select>
+
+      <label for="guestCount">
+        NUMBER OF GUESTS
+      </label>
+
+      <select id="guestCount">
+
+        <option value="1">1 guest</option>
+        <option value="2">2 guests</option>
+        <option value="3">3 guests</option>
+        <option value="4">4 guests</option>
+
+      </select>
+
+      <button type="submit">
+        SUBMIT RSVP
+      </button>
+
+      <div
+        class="rsvp-response"
+        id="response"
+        aria-live="polite"
+      ></div>
+
+    </form>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <h2>Esi & Kwesi</h2>
+
+    <p>ONE LOVE · ONE LIFETIME</p>
+
+    <p>10 · 12 · 2026</p>
+
+  </footer>
+
+</main>
+
+
+<script>
+
+/* =========================
+   CURTAIN OPENING
+========================= */
+
+const opening = document.getElementById('opening');
+const main = document.getElementById('main');
+
+let isOpening = false;
+
+function openInvitation() {
+
+  if (isOpening) return;
+
+  isOpening = true;
+
+  opening.classList.add('opened');
+
+  setTimeout(() => {
+    main.classList.add('visible');
+  }, 1000);
+
+  setTimeout(() => {
+    opening.style.display = 'none';
+  }, 3400);
+
+}
+
+opening.addEventListener('click', openInvitation);
+
+opening.addEventListener('keydown', (e) => {
+
+  if (e.key === 'Enter' || e.key === ' ') {
+
+    e.preventDefault();
+    openInvitation();
+
+  }
+
+});
+
+
+/* =========================
+   WEDDING COUNTDOWN
+   Ghana time (GMT)
+========================= */
+
+const weddingDate = new Date(
+  '2026-12-10T09:00:00+00:00'
+).getTime();
+
+function updateCountdown() {
+
+  const now = Date.now();
+
+  const difference = weddingDate - now;
+
+  if (difference <= 0) {
+
+    document.getElementById('days').textContent = '00';
+    document.getElementById('hours').textContent = '00';
+    document.getElementById('minutes').textContent = '00';
+    document.getElementById('seconds').textContent = '00';
+
+    return;
+
+  }
+
+  const days = Math.floor(
+    difference / (1000 * 60 * 60 * 24)
+  );
+
+  const hours = Math.floor(
+    (difference / (1000 * 60 * 60)) % 24
+  );
+
+  const minutes = Math.floor(
+    (difference / (1000 * 60)) % 60
+  );
+
+  const seconds = Math.floor(
+    (difference / 1000) % 60
+  );
+
+  document.getElementById('days').textContent =
+    String(days).padStart(2, '0');
+
+  document.getElementById('hours').textContent =
+    String(hours).padStart(2, '0');
+
+  document.getElementById('minutes').textContent =
+    String(minutes).padStart(2, '0');
+
+  document.getElementById('seconds').textContent =
+    String(seconds).padStart(2, '0');
+
+}
+
+updateCountdown();
+
+setInterval(updateCountdown, 1000);
+
+
+/* =========================
+   RSVP DEMO
+========================= */
+
+document.getElementById('rsvpForm')
+.addEventListener('submit', function(e) {
+
+  e.preventDefault();
+
+  const guest = {
+
+    name: document.getElementById('guestName').value,
+
+    attendance: document.getElementById('attendance').value,
+
+    guests: document.getElementById('guestCount').value
+
+  };
+
+  const existing = JSON.parse(
+
+    localStorage.getItem('esiKwesiRSVP') || '[]'
+
+  );
+
+  existing.push(guest);
+
+  localStorage.setItem(
+
+    'esiKwesiRSVP',
+
+    JSON.stringify(existing)
+
+  );
+
+  document.getElementById('response').textContent =
+
+    'Thank you! Your response has been saved on this device.';
+
+  this.reset();
+
+});
+
+</script>
+
+</body>
+</html>
+
